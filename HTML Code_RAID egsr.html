@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAID EGSR — Early Game Speed Run</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15141c;
+    --ink-soft:#1e1c28;
+    --violet:#4b3f6b;
+    --violet-soft:#332c4a;
+    --bone:#e9e2d3;
+    --bone-dim:#b9b2a3;
+    --ember:#c2622e;
+    --steel:#6e7a8c;
+    --serif: 'Fraunces', serif;
+    --sans: 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  header{
+    padding:28px 0;
+    border-bottom:1px solid rgba(233,226,211,0.08);
+  }
+  header .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .mark{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.15rem;
+    letter-spacing:0.01em;
+  }
+  .mark span{color:var(--ember);}
+  nav{display:flex; gap:28px; font-size:0.92rem;}
+  nav a{text-decoration:none; color:var(--bone-dim); transition:color 0.15s ease;}
+  nav a:hover{color:var(--bone);}
+
+  .hero{
+    padding:96px 0 88px;
+  }
+  .hero-eyebrow{
+    color:var(--steel);
+    font-size:0.95rem;
+    max-width:36ch;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    line-height:1.05;
+    max-width:14ch;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lede{
+    margin-top:26px;
+    font-size:1.15rem;
+    color:var(--bone-dim);
+    max-width:46ch;
+  }
+  .hero-actions{
+    margin-top:38px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:13px 24px;
+    border-radius:3px;
+    font-size:0.95rem;
+    font-weight:500;
+    text-decoration:none;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{
+    background:var(--ember);
+    color:var(--ink);
+  }
+  .btn-primary:hover{background:#d67540;}
+  .btn-ghost{
+    border:1px solid rgba(233,226,211,0.25);
+    color:var(--bone);
+  }
+  .btn-ghost:hover{border-color:rgba(233,226,211,0.5);}
+
+  section{padding:70px 0;}
+  section.divider{border-top:1px solid rgba(233,226,211,0.08);}
+
+  h2.section-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:2rem;
+    max-width:20ch;
+    margin-bottom:16px;
+  }
+  .section-intro{
+    color:var(--bone-dim);
+    max-width:52ch;
+    margin-bottom:48px;
+    font-size:1.02rem;
+  }
+
+  .roadmap{
+    display:flex;
+    flex-direction:column;
+  }
+  .step{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:22px;
+    padding:26px 0;
+    border-top:1px solid rgba(233,226,211,0.08);
+  }
+  .step:last-child{border-bottom:1px solid rgba(233,226,211,0.08);}
+  .step-num{
+    font-family:var(--serif);
+    font-size:1.6rem;
+    color:var(--violet);
+    font-weight:500;
+  }
+  .step h3{
+    font-family:var(--serif);
+    font-size:1.25rem;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .step p{color:var(--bone-dim); max-width:56ch; font-size:0.98rem;}
+
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  @media (max-width:720px){
+    .split{grid-template-columns:1fr;}
+    .step{grid-template-columns:44px 1fr;}
+  }
+
+  .panel{
+    background:var(--ink-soft);
+    border:1px solid rgba(233,226,211,0.08);
+    border-radius:4px;
+    padding:32px;
+  }
+  .panel h3{
+    font-family:var(--serif);
+    font-size:1.3rem;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .panel p{color:var(--bone-dim); font-size:0.98rem; margin-bottom:18px;}
+
+  .note{
+    margin-top:14px;
+    font-size:0.85rem;
+    color:var(--steel);
+    max-width:60ch;
+  }
+
+  footer{
+    padding:48px 0 60px;
+    border-top:1px solid rgba(233,226,211,0.08);
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  footer .biz{
+    font-size:0.85rem;
+    color:var(--steel);
+    max-width:40ch;
+  }
+  footer nav{gap:20px; font-size:0.85rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="mark">RAID <span>EGSR</span></div>
+    <nav>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#watch">Watch</a>
+      <a href="#coaching">Coaching</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-eyebrow">A field guide for the first weeks of RAID: Shadow Legends</p>
+    <h1>Skip the slow start.</h1>
+    <p class="lede">Most players spend their first month in RAID guessing. EGSR is a straight line through it — the champions worth keeping, the shards worth saving, and the exact order to unlock what actually matters.</p>
+    <div class="hero-actions">
+      <a href="#watch" class="btn btn-primary">Watch the channel</a>
+      <a href="#roadmap" class="btn btn-ghost">See the roadmap</a>
+    </div>
+  </div>
+</section>
+
+<section class="divider" id="roadmap">
+  <div class="wrap">
+    <h2 class="section-title">The early-game path, in order</h2>
+    <p class="section-intro">Six checkpoints cover the first two weeks of a new account — from your starter pick through your first real faction push. Each one is a short video on the channel; together they're the whole run.</p>
+    <div class="roadmap">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div><h3>Pick your starter</h3><p>Which of the tutorial champions to keep, and which to bench the moment you can.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div><h3>Clear the early campaign efficiently</h3><p>The stages worth full-clearing versus the ones to blitz through on the way to Hard difficulty.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div><h3>Save your first Sacred Shard</h3><p>Why patience here compounds — and the one exception worth an early pull.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div><h3>Unlock the Arbiter</h3><p>The fastest route through the Progress Missions that gate it.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div><h3>Build your first real team</h3><p>A five-champion core that carries you into Dungeons and early Faction Wars.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">06</div>
+        <div><h3>Start your first Faction push</h3><p>Where to aim once the early campaign stops being the bottleneck.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="divider" id="watch">
+  <div class="wrap split">
+    <div>
+      <h2 class="section-title">Live, unedited, weekly</h2>
+      <p style="color:var(--bone-dim); font-size:1rem; max-width:44ch;">No cutaways, no jump cuts — streams follow a live account through the exact roadmap above, plus a running Q&A. Shorts break out single decisions (one champion, one shard, one call) for anyone short on time.</p>
+    </div>
+    <div class="panel">
+      <h3>This week's stream</h3>
+      <p>Early campaign clear + Arbiter unlock walkthrough, with live questions from new players following along on their own accounts.</p>
+      <a href="#" class="btn btn-primary">Open on YouTube</a>
+    </div>
+  </div>
+</section>
+
+<section class="divider" id="coaching">
+  <div class="wrap split">
+    <div class="panel">
+      <h3>Account review</h3>
+      <p>Send your account state, get a direct read on what to fix first — champion keeps, shard priorities, and where you're behind pace.</p>
+      <a href="#" class="btn btn-ghost">Request a slot</a>
+      <p class="note">Opening once a first cohort of viewers is through the roadmap.</p>
+    </div>
+    <div>
+      <h2 class="section-title">One-on-one, when it's useful</h2>
+      <p style="color:var(--bone-dim); font-size:1rem; max-width:44ch;">Most of what's on the channel is free and public. Coaching exists for the handful of specific, account-level questions a general video can't answer.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="biz">RAID EGSR is a project of Vocation, Inc. Not affiliated with or endorsed by Plarium Games.</div>
+    <nav>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#watch">Watch</a>
+      <a href="#coaching">Coaching</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
